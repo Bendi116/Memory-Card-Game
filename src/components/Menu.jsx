@@ -1,6 +1,6 @@
 export function Menu({onClick}){
     return(
-        <div>
+        <div className="menuButtons">
             <button onClick={()=>onClick(1)}>Easy</button>
             <button onClick={()=>onClick(2)}>Medium</button>
             <button onClick={()=>onClick(3)}>Hard</button>

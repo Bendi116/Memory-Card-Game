@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react'
-import './App.css'
 import {Menu} from './components/Menu'
 import {GameBoard} from "./components/GameBoard"
 import './styles/style.css'
@@ -10,6 +9,7 @@ function App() {
   const [bestCount,setBestCount] = useState(0)
   const [difficulty,setDifficulty] = useState(0)
   const [hasWin,setHasWin] = useState(false)
+  const [showDialog,setShowDialog] =useState(false)
 
 
   useEffect(()=>{    
@@ -27,7 +27,6 @@ function App() {
 
 
   function generateRandChamps(diff){
-    console.log("Generate rand champs")
       const tempArray = [];
       for(let i = 0; i < diff*5;++i){
         let random =  Math.floor((Math.random() % champions.length)*100)
@@ -41,6 +40,7 @@ function App() {
       }
       setSelectedChampions([...tempArray])
       setHasWin(false)
+      setShowDialog(false)
   }
 
 
@@ -54,22 +54,33 @@ function App() {
     if( count == difficulty * 5) setHasWin(true)
     if(count > bestCount) {setBestCount(count)}
     setSelectedChampions([])
+    setShowDialog(true)
+  }
+
+  function closeDialog(){
+    setShowDialog(false)
   }
 
 
   return (
     <>
-     <h1>Hi</h1>
-     <h3>Best count : {bestCount}</h3>
-      { selectedChampions.length===0 &&  <Menu onClick={(diff)=>{handleMenuInput(diff)}}></Menu> }
-      { selectedChampions.length!==0 && <GameBoard selectedChampions={selectedChampions}  handleGameEnd={(count)=>handleGameEnd(count)} maxCount={difficulty*5}></GameBoard>}
+     
+      { selectedChampions.length===0 &&  
+      <div className='menuContainer'>
+        <h1>Hi</h1>
+        <h3>Best count : {bestCount}</h3>
+        <Menu onClick={(diff)=>{handleMenuInput(diff)}}></Menu>
+      </div> }
+      { selectedChampions.length!==0 && <GameBoard selectedChampions={selectedChampions}  handleGameEnd={(count)=>handleGameEnd(count)} bestCount={bestCount} maxCount={difficulty*5}></GameBoard>}
       
-      {(selectedChampions.length===0 && bestCount!==0) && <dialog open className='reTryDialog'>
+      {(showDialog==true) && <dialog open className='reTryDialog' id='d1'>
         {hasWin==true ? <h1>You WIN!!!</h1>: <h2>You Lose!!</h2>}
-            <form method="dialog">
-              <button onClick={()=>generateRandChamps(difficulty)}>{hasWin==true?"PLAY AGAIN":"TRY AGAIn"}</button>
-              <button>Exit</button>
+            <form method="dialog"  className='dialogForm'>
+              <button onClick={()=>generateRandChamps(difficulty)}>{hasWin==true?"PLAY AGAIN":"TRY AGAIN"}</button>
+              <button  onClick={()=>{closeDialog()}}>Exit</button>
+
             </form>
+
       </dialog>}
    
 

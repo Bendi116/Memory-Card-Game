@@ -1,6 +1,176 @@
-.reTryDialog{
-    width: 50vw;
-    height: 50vw;
-    z-index: 1;
-    transform: translateY(-50%);
+@font-face {
+    font-family: Beaufort;
+    src: url("./fonts/BeaufortforLOL-Regular.ttf");
 }
+
+:root {
+    font-family: Beaufort, Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+    line-height: 1.5;
+    font-weight: 600;
+    --app-gold:#C8AA6E; /*#785A28*/
+    --app-light-blue:#0AC8B9;
+    --app-dark-blue:#091428; /*#0A323C*/
+    --app-grey:#1E282D;
+    --app-light-grey:#A09B8C;
+    --app-deep-gold:#785A28;
+
+  
+    color: var(--app-light-grey);
+    background-color: var(--app-grey);
+  
+    font-size: 1.4rem;
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+  }
+
+  h1 {
+    font-size: 3.2em;
+    line-height: 0;
+  }
+
+h2{
+    font-weight:bolder;
+    font-size: 2rem;
+    margin-bottom: 0.4rem;
+}
+
+  h3{
+    margin: 0;
+  }
+
+
+  button {
+    border-radius: 8px;
+    border: 1px solid transparent;
+    padding: 0.6em 1.2em;
+    font-size: 1em;
+    font-weight: 500;
+    font-family: inherit;
+    background: linear-gradient(var(--app-gold), var(--app-deep-gold));
+    color: var(--app-grey);
+    cursor: pointer;
+    transition: transform 1s;
+  }
+  button:hover {
+    transform: scale(0.9);
+  }
+  button:focus,
+  button:focus-visible {
+    outline: 4px auto -webkit-focus-ring-color;
+  }
+  
+
+
+
+  .menuContainer{
+    margin: 5rem auto;
+    padding: 2rem;
+    width: 40vw;
+    text-align: center;
+    background-color: var(--app-light-grey);
+    color: var(--app-grey);
+    border-radius: 3rem;
+    border:3px solid var(--app-deep-gold    );
+  }
+  .menuButtons{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+  .menuButtons button{
+    width: 7rem;
+  }
+
+
+  .gameBoardContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  .memorycardContainer{
+    margin-top: 1rem;
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: center;
+    align-self:center;
+    perspective: 5000px;
+
+  }
+
+  .memoryCard{
+    width: fit-content;
+    height: fit-content;
+
+    transition: transform 0.5s ease-in-out;
+    position: relative;
+    border-radius: 1.4rem;
+}
+
+.memoryCard img{
+    display: block;
+    width: 10rem;
+    height:auto;
+    border-radius: inherit;
+
+}
+
+  
+
+
+
+.reTryDialog{
+    width: 30vw;
+    height: 25vw;
+    border-radius: 2rem;
+    background-color: var(--app-grey);
+    color: var(--app-light-grey);
+    border: 3px solid var(--app-deep-gold);
+    z-index: 1;
+    transform: translateY(-130%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.dialogForm{
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+
+
+
+/*
+from index.css
+
+
+a {
+  font-weight: 500;
+  color: #646cff;
+  text-decoration: inherit;
+}
+a:hover {
+  color: #535bf2;
+}
+
+
+
+
+
+*/
+
